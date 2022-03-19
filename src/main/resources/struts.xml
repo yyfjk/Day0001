@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+
+    <constant name="struts.devMode" value="true"/>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+    <constant name="struts.action.extension" value="do"></constant>
+
+    <package name="test" extends="struts-default">
+        <action name="first" class="org.example.FirstAction">
+            <result name="success">first.jsp</result>
+
+        </action>
+        <action name="m2" method="method2" class="org.example.FirstAction">
+            <result name="m2">m2.jsp</result>
+        </action>
+        <action name="m3" method="method3" class="org.example.FirstAction">
+            <result name="m3">m3.jsp</result>
+        </action>
+        <action name="three" class="org.example.ThreeAction">
+            <result>/x1.jsp</result>
+            <result name="x1">/x1.jsp</result>
+            <result name="x2">/x2.jsp</result>
+            <result name="x3">/x3.jsp</result>
+            <allowed-methods>threeMethod1,threeMethod2,threeMethod3</allowed-methods>
+        </action>
+    </package>
+    <package name="test2" namespace="/" extends="struts-default">
+        <action name="*_*" class="org.example.action.{1}Action" method="{2}">
+            <result name="{1}_{2}">/{1}_{2}.jsp</result>
+            <allowed-methods>m1,m2,m3,new1,new2,new3,getData</allowed-methods>
+
+
+        </action>
+
+    </package>
+
+</struts>
