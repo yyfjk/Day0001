@@ -19,6 +19,8 @@ public class StudentDao {
         preparedStatement.setObject(5,((String[])map.get("stu_telephone"))[0].toString());
         preparedStatement.execute();
         preparedStatement.close();//关闭资源
+
+
     }
 
 }
